@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { toggleMenu } from "../utils/globalAppSlice";
+import { toggleMenu, addMainVideoList } from "../utils/globalAppSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/contants";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
 
+  //  const getSearchSuggestionList = () => {}
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => getSearchSuggestionList(), 200);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [searchQuery]);
+
   return (
-    <div className="grid grid-flow-col p-2 ">
+    <div className="grid grid-flow-col p-2">
       <div className="flex col-span-1">
         <img
           className="h-14 cursor-pointer"
@@ -32,19 +44,29 @@ const Header = () => {
             className="w-full border rounded-l-full h-11 pl-4"
             type="text"
             placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="h-11 bg-gray-200 rounded-r-full">
-            <img
-              className="h-full w-full px-5 py-3"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png"
-              alt="search-icon"
-            />
-          </button>
+          <Link
+            to={
+              searchQuery.length > 0
+                ? "/results?search_query=" + searchQuery
+                : "/"
+            }
+          >
+            <button className="h-11 bg-gray-200 rounded-r-full">
+              <img
+                className="h-full w-full px-5 py-3"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png"
+                alt="search-icon"
+              />
+            </button>
+          </Link>
         </div>
       </div>
-      <div className="col-span-1">
+      <div className="col-span-1 flex justify-end pt-1">
         <img
-          className="h-10"
+          className="h-8"
           src="https://cdn-icons-png.flaticon.com/512/61/61205.png"
           alt="acc-icon"
         />

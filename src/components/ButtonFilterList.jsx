@@ -19,7 +19,7 @@ const buttons = [
 
 const ButtonFilters = () => {
   return (
-    <div className="flex overflow-x-scroll">
+    <div className="flex overflow-x-scroll font-semibold">
       {buttons.map((button, index) => {
         return <ButtonFilter key={index} name={button} />;
       })}

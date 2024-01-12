@@ -1,25 +1,59 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { toggleMenu, addMainVideoList } from "../utils/globalAppSlice";
-import { YOUTUBE_SEARCH_API } from "../utils/contants";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMenu } from "../utils/globalAppSlice";
 import { Link } from "react-router-dom";
+import { YOUTUBE_SEARCH_SUGGESTIONS_API } from "../utils/contants";
+//import { trimSearchResults } from "../utils/trimSearchResults";
+import { cacheSearchQuery } from "../utils/searchSlice";
 
 const Header = () => {
+  //  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+
+  const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
+
+  const [suggestionList, setSuggestionList] = useState([]);
+  const [showDropDown, setShowDropDown] = useState(false);
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
 
-  //  const getSearchSuggestionList = () => {}
+  const getSearchSuggestionList = async () => {
+    try {
+      const data = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API + searchQuery);
+      const json = await data.json();
+      const filteredSuggestion = json.items.map((item) => {
+        return item.title;
+      });
+      setSuggestionList(filteredSuggestion);
+      dispatch(
+        cacheSearchQuery({
+          [searchQuery]: filteredSuggestion,
+        })
+      );
+    } catch {
+      dispatch(
+        cacheSearchQuery({
+          [searchQuery]: suggestionList,
+        })
+      );
+    }
+  };
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => getSearchSuggestionList(), 200);
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [searchQuery]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestionList(searchCache[searchQuery]);
+      } else {
+        searchQuery.length > 0 && getSearchSuggestionList();
+      }
+    }, 200);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
 
   return (
     <div className="grid grid-flow-col p-2">
@@ -40,13 +74,36 @@ const Header = () => {
       </div>
       <div className="col-span-10 flex justify-center">
         <div className="w-1/2 overflow-hidden flex">
-          <input
-            className="w-full border rounded-l-full h-11 pl-4"
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+          <div className="flex w-full">
+            <input
+              className="w-full border rounded-l-full h-11 pl-4"
+              type="text"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setShowDropDown(true)}
+              onBlur={() => setShowDropDown(false)}
+            />
+            {showDropDown && searchQuery.length ? (
+              <ul className="bg-white w-[615px] absolute top-14 z-20 flex flex-col shadow-xl rounded-xl border py-3 px-3">
+                {suggestionList.map((item, index) => {
+                  return (
+                    <li
+                      className="shadow-sm hover:bg-gray-300 py-1.5 cursor-pointer"
+                      key={index}
+                      // onClick={() => {
+                      //   alert("Yes");
+                      //   setSearchQuery(item);
+                      //   navigate(`/results?search_query=${item}`);
+                      // }}
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
+          </div>
           <Link
             to={
               searchQuery.length > 0

@@ -4,7 +4,7 @@ const SearchVideoCard = ({ info }) => {
   const { snippet } = info;
   const { channelTitle, title, thumbnails, publishedAt } = snippet;
   return (
-    <div className=" h-72 w-full z-0 mx-1 my-3 flex">
+    <div className=" h-72 w-full z-10 mx-1 my-3 flex">
       <img
         className="rounded-xl p-1 w-[35%]"
         src={thumbnails.medium.url}

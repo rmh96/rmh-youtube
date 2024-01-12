@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
-import WatchPage from "./components/WatchPage";
+import WatchPage from "./components/watchpages/WatchPage";
 import SearchVideoPage from "./components/SearchVideoPage";
 import VideoContainer from "./components/VideoContainer";
 
@@ -51,8 +51,10 @@ function App() {
   return (
     <Provider store={store}>
       <RouterProvider router={appRouter}>
-        <Header />
-        <Body />
+        <div className="w-full h-full">
+          <Header />
+          <Body />
+        </div>
       </RouterProvider>
     </Provider>
   );

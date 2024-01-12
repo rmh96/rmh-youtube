@@ -23,7 +23,7 @@ const SearchVideoPage = () => {
     <div className="ml-3 mt-2 flex flex-col w-full">
       {searchResultVideos &&
         searchResultVideos.map((item, index) => (
-          <Link key={index} to={"/watch?v=" + item.id}>
+          <Link key={index} to={"/watch?v=" + item.id.videoId}>
             <SearchVideoCard info={item} key={index} />
           </Link>
         ))}

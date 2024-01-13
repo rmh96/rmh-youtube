@@ -50,13 +50,14 @@ const WatchVideoDescription = ({ info }) => {
         ).toLocaleString()} views`}</span>
         {isExpanded && (
           <div>
-            {tags.map((element) => {
-              return (
-                <span key={element} className="text-blue-600 px-1">
-                  #{element}
-                </span>
-              );
-            })}
+            {tags &&
+              tags.map((element) => {
+                return (
+                  <span key={element} className="text-blue-600 px-1">
+                    #{element}
+                  </span>
+                );
+              })}
           </div>
         )}
         <div>{isExpanded ? description : description.substr(0, 200)}</div>

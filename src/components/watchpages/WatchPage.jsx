@@ -5,6 +5,7 @@ import { closeMenu } from "../../utils/globalAppSlice";
 import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_SPECIFIC_VIDEO_API } from "../../utils/contants";
 import WatchVideoDescription from "./WatchVideoDescription";
+import CommentContainer from "../comments/CommentContainer";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -34,11 +35,11 @@ const WatchPage = () => {
           src={"https://www.youtube.com/embed/" + searchParams.get("v")}
           title="YouTube video player"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"
           allowFullScreen
-          autoPlay
         ></iframe>
         <WatchVideoDescription info={videoSpecificInfo} />
+        <CommentContainer />
       </div>
       <div className="h-full border"></div>
     </div>

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const WatchVideoDescription = ({ info }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  console.log("Info", info);
   if (info.length === 0) {
     return <div className="font-semibold">Loading...</div>;
   }
@@ -32,7 +31,7 @@ const WatchVideoDescription = ({ info }) => {
           </button>
           <div className="absolute right-2 flex cursor-pointer">
             <div className="border border-gray-300 bg-gray-200 rounded-l-full px-4 py-2 hover:bg-gray-300">{`👍🏻   ${(
-              viewCount + ""
+              likeCount + ""
             ).slice(0, 3)}K`}</div>
             <div className="border border-gray-300 bg-gray-200 rounded-r-full px-4 py-2 hover:bg-gray-300">
               👎🏻

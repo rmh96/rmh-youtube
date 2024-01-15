@@ -6,10 +6,12 @@ import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_SPECIFIC_VIDEO_API } from "../../utils/contants";
 import WatchVideoDescription from "./WatchVideoDescription";
 import CommentContainer from "../comments/CommentContainer";
+import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const [videoSpecificInfo, setvideoSpecificInfo] = useState([]);
+  const [liveChatToggle, setLiveChatToggle] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const WatchPage = () => {
         <iframe
           width="98%"
           className="py-2 rounded-3xl"
-          height="720"
+          height="600"
           src={"https://www.youtube.com/embed/" + searchParams.get("v")}
           title="YouTube video player"
           frameBorder="0"
@@ -41,7 +43,15 @@ const WatchPage = () => {
         <WatchVideoDescription info={videoSpecificInfo} />
         <CommentContainer />
       </div>
-      <div className="h-full border"></div>
+      <div className="w-[28%]">
+        <div
+          onClick={() => setLiveChatToggle(!liveChatToggle)}
+          className="bg-slate-100 px-3 h-10 border rounded-full grid place-content-center text-sm font-semibold mb-2 cursor-pointer"
+        >
+          Open / Close Live Chat
+        </div>
+        {liveChatToggle ? <LiveChat /> : null}
+      </div>
     </div>
   );
 };

@@ -4,15 +4,23 @@ import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addMainVideoList } from "../utils/globalAppSlice";
+import { homeScreenVideos } from "../static-data/data";
 
 const VideoContainer = () => {
   const mainVideoList = useSelector((store) => store.app.mainVideoList);
   const dispatch = useDispatch();
 
   const getVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEO_API);
-    const json = await data.json();
-    dispatch(addMainVideoList(json.items));
+    try {
+      const data = await fetch(YOUTUBE_VIDEO_API);
+      if (data.status !== 200) {
+        throw new Error("API Call Failed");
+      }
+      const json = await data.json();
+      dispatch(addMainVideoList(json.items));
+    } catch {
+      dispatch(addMainVideoList(homeScreenVideos));
+    }
   };
 
   useEffect(() => {

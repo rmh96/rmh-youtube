@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/globalAppSlice";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { YOUTUBE_SEARCH_SUGGESTIONS_API } from "../utils/contants";
 //import { trimSearchResults } from "../utils/trimSearchResults";
 import { cacheSearchQuery } from "../utils/searchSlice";
@@ -99,7 +99,7 @@ const Header = () => {
               </ul>
             ) : null}
           </div>
-          <Link
+          <NavLink
             to={
               searchQuery.length > 0
                 ? "/results?search_query=" + searchQuery
@@ -113,7 +113,7 @@ const Header = () => {
                 alt="search-icon"
               />
             </button>
-          </Link>
+          </NavLink>
         </div>
       </div>
       <div className="col-span-1 flex justify-end pt-2">

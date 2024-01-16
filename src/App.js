@@ -30,18 +30,22 @@ const appRouter = createBrowserRouter([
         ],
       },
       {
-        path: "watch",
+        path: "/watch",
         element: <WatchPage />,
       },
+      // {
+      //   path: "/",
+      //   element: <MainContainer />,
+      //   children: [
+      //     {
+      //       path: "results",
+      //       element: <SearchVideoPage />,
+      //     },
+      //   ],
+      // },
       {
-        path: "/",
-        element: <MainContainer />,
-        children: [
-          {
-            path: "results",
-            element: <SearchVideoPage />,
-          },
-        ],
+        path: "/results",
+        element: <SearchVideoPage />,
       },
     ],
   },
@@ -59,15 +63,4 @@ function App() {
     </Provider>
   );
 }
-
-/*
-Head
-Body
-  SideBar
-    Links
-  MainContainer
-    Button Filters
-    VideoContainers
-*/
-
 export default App;

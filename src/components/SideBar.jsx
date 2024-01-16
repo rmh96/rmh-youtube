@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -12,7 +12,7 @@ const SideBar = () => {
     <div className="p-6  w-56">
       <ul className="flex flex-col space-y-2 pt-2">
         <li>
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>Shorts</li>
         <li>Water Later</li>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import { YOUTUBE_SEARCH_API } from "../utils/contants";
 import SearchVideoCard from "./SearchVideoCard";
 
@@ -23,9 +23,9 @@ const SearchVideoPage = () => {
     <div className="ml-3 mt-2 flex flex-col w-full">
       {searchResultVideos &&
         searchResultVideos.map((item, index) => (
-          <Link key={index} to={"/watch?v=" + item.id.videoId}>
+          <NavLink key={index} to={"/watch?v=" + item.id.videoId}>
             <SearchVideoCard info={item} key={index} />
-          </Link>
+          </NavLink>
         ))}
     </div>
   );

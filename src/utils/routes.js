@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Body from "../components/Body";
-import VideoContainer from "../components/VideoContainer";
+import MainContainer from "../components/MainContainer";
 
 const WatchPage = lazy(() => import("../components/watchpages/WatchPage.jsx"));
 const SearchResultsPage = lazy(() =>
@@ -20,7 +20,7 @@ export const appRouter = createBrowserRouter([
         children: [
           {
             path: "/",
-            element: <VideoContainer />,
+            element: <MainContainer />,
           },
           {
             path: "watch",

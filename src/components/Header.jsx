@@ -91,11 +91,6 @@ const Header = () => {
                     <li
                       className="shadow-sm hover:bg-gray-300 py-1.5 cursor-pointer"
                       key={index}
-                      // onClick={() => {
-                      //   alert("Yes");
-                      //   setSearchQuery(item);
-                      //   navigate(`/results?search_query=${item}`);
-                      // }}
                     >
                       {item}
                     </li>

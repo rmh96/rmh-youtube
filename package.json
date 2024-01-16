@@ -1,6 +1,7 @@
 {
   "name": "rmh-youtube",
   "version": "0.1.0",
+  "homepage": "https://rmh96.github.io/rmh-youtube",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
@@ -18,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +42,8 @@
     ]
   },
   "devDependencies": {
+    "dotenv": "^16.3.1",
+    "gh-pages": "^6.1.1",
     "tailwindcss": "^3.4.1"
   }
 }

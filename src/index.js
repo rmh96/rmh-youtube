@@ -21,14 +21,14 @@ const appRouter = createBrowserRouter([
             path: "/",
             element: <VideoContainer />,
           },
-          {
-            path: "/watch",
-            element: <WatchPage />,
-          },
-          {
-            path: "/results",
-            element: <SearchVideoPage />,
-          },
+          // {
+          //   path: "/watch",
+          //   element: <WatchPage />,
+          // },
+          // {
+          //   path: "/results",
+          //   element: <SearchVideoPage />,
+          // },
         ],
       },
       // {

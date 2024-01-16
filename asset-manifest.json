@@ -1,13 +1,17 @@
 {
   "files": {
     "main.css": "/rmh-youtube/static/css/main.6278d5de.css",
-    "main.js": "/rmh-youtube/static/js/main.12261c12.js",
+    "main.js": "/rmh-youtube/static/js/main.efd3c834.js",
+    "static/js/699.c8849599.chunk.js": "/rmh-youtube/static/js/699.c8849599.chunk.js",
+    "static/js/153.00f9cede.chunk.js": "/rmh-youtube/static/js/153.00f9cede.chunk.js",
     "index.html": "/rmh-youtube/index.html",
     "main.6278d5de.css.map": "/rmh-youtube/static/css/main.6278d5de.css.map",
-    "main.12261c12.js.map": "/rmh-youtube/static/js/main.12261c12.js.map"
+    "main.efd3c834.js.map": "/rmh-youtube/static/js/main.efd3c834.js.map",
+    "699.c8849599.chunk.js.map": "/rmh-youtube/static/js/699.c8849599.chunk.js.map",
+    "153.00f9cede.chunk.js.map": "/rmh-youtube/static/js/153.00f9cede.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6278d5de.css",
-    "static/js/main.12261c12.js"
+    "static/js/main.efd3c834.js"
   ]
 }

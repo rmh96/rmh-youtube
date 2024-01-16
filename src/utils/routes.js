@@ -1,9 +1,13 @@
+import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Body from "../components/Body";
 import VideoContainer from "../components/VideoContainer";
-import WatchPage from "../components/watchpages/WatchPage";
-import SearchVideoPage from "../components/SearchVideoPage";
+
+const WatchPage = lazy(() => import("../components/watchpages/WatchPage.jsx"));
+const SearchResultsPage = lazy(() =>
+  import("../components/SearchVideoPage.jsx")
+);
 
 export const appRouter = createBrowserRouter([
   {
@@ -20,11 +24,19 @@ export const appRouter = createBrowserRouter([
           },
           {
             path: "watch",
-            element: <WatchPage />,
+            element: (
+              <Suspense>
+                <WatchPage />
+              </Suspense>
+            ),
           },
           {
             path: "results",
-            element: <SearchVideoPage />,
+            element: (
+              <Suspense>
+                <SearchResultsPage />
+              </Suspense>
+            ),
           },
         ],
       },

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { YOUTUBE_VIDEO_API } from "../utils/contants";
 import VideoCard from "./VideoCard";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addMainVideoList } from "../utils/globalAppSlice";
 import { homeScreenVideos } from "../static-data/data";

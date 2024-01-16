@@ -1,7 +1,7 @@
 {
   "name": "rmh-youtube",
   "version": "0.1.0",
-  "homepage": "https://rmh96.github.io/rmh-youtube/",
+  "homepage": "https://rmh-youtube.vercel.app/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",

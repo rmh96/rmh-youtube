@@ -3,14 +3,14 @@ import "./App.css";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import store from "./utils/store";
-import { RouterProvider, createHashRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/watchpages/WatchPage";
 import SearchVideoPage from "./components/SearchVideoPage";
 import VideoContainer from "./components/VideoContainer";
 import FallBack from "./components/FallBack";
 
-const appRouter = createHashRouter([
+const appRouter = createBrowserRouter([
   {
     path: "/",
     element: (
